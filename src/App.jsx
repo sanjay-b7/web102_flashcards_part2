@@ -12,7 +12,17 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const onNext = () => {
-    setCurrentIndex(Math.floor(Math.random() * 49.9))
+    setCurrentIndex((currentIndex+1) % 50)
+    setIsQuestion(true)
+  }
+
+  const onPrev = () => {
+    if (currentIndex === 0) {
+      setCurrentIndex(49)
+    }
+    else{
+      setCurrentIndex(currentIndex-1)
+    }
     setIsQuestion(true)
   }
 
@@ -32,7 +42,7 @@ function App() {
       </div>
       <Flashcard card={questionBankData[currentIndex]} flipFunction={flipCard} isQuestion={isQuestion}/>
       <div className="button-container">
-        <button onClick={onNext}><HiArrowLeft size={30}/></button>
+        <button onClick={onPrev}><HiArrowLeft size={30}/></button>
         <button onClick={onNext}><HiArrowRight size={30}/></button>
       </div>
     </div>
