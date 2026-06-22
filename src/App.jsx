@@ -12,18 +12,16 @@ function App() {
   const [currentIndex, setCurrentIndex] = useState(0)
 
   const onNext = () => {
-    setCurrentIndex((currentIndex+1) % 50)
+    if (currentIndex < 50) {
+      setCurrentIndex(currentIndex+1)
+    }
     setIsQuestion(true)
   }
 
   const onPrev = () => {
-    if (currentIndex === 0) {
-      setCurrentIndex(49)
-    }
-    else{
+    if (currentIndex !== 0) {
       setCurrentIndex(currentIndex-1)
     }
-    setIsQuestion(true)
   }
 
   const [isQuestion, setIsQuestion] = useState(true)
@@ -42,8 +40,12 @@ function App() {
       </div>
       <Flashcard card={questionBankData[currentIndex]} flipFunction={flipCard} isQuestion={isQuestion}/>
       <div className="button-container">
-        <button onClick={onPrev}><HiArrowLeft size={30}/></button>
-        <button onClick={onNext}><HiArrowRight size={30}/></button>
+        <button onClick={onPrev} disabled={currentIndex === 0}>
+          <HiArrowLeft size={30}/>
+          </button>
+        <button  onClick={onNext} disabled={currentIndex === 49}>
+          <HiArrowRight size={30}/>
+          </button>
       </div>
     </div>
   )
