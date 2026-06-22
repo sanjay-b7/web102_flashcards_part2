@@ -34,3 +34,30 @@ button {
     margin: 30px 10px;
     border-radius: 10px;
 }
+
+.guess-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.guess-container label {
+    color: white;
+}
+
+.guess-container input {
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: black;
+    font-size: 1rem;
+}
+
+.guess-container input.guess-correct {
+    border-color: #6ebf5f;
+}
+
+.guess-container input.guess-incorrect {
+    border-color: #ff7b7b;
+}
